@@ -1,0 +1,323 @@
+.catalog-item {
+
+  &__wrapper {
+    position: relative;
+    width: 587px;
+    min-height: 707px;
+    border-radius: 25px;
+    background: #F8FAFC;
+    padding: 45px 46px;
+  }
+
+  &__new-label {
+    position: absolute;
+    width: 71px;
+    height: 26px;
+    top: 44px;
+    left: 31px;
+
+    background: linear-gradient(261.65deg, #EFBB37 -3.95%, #CF9E1F 109.44%);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+
+    color: white;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__compare-button {
+    position: absolute;
+    top: 44px;
+    right: 30px;
+
+    width: 46px;
+    height: 46px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+
+    border: none;
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 256px;
+      height: 261px;
+      filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.05));
+      border-radius: 25px;
+    }
+  }
+
+  &__text-wrapper {
+    padding: 25px 0 20px 0;
+  }
+
+  &__title {
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  &__descr {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 10px;
+    color: #2C2C2C;
+  }
+
+  &__color-price-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__color-select {
+
+    width: 258px;
+    height: 30px;
+    border-radius: 15px;
+    background: white;
+
+    &:hover {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+
+    }
+
+
+    details {
+      position: relative;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px 8px 20px;
+    }
+
+    details[open] summary:after {
+      transform: rotate(135deg) translate(50%, 0);
+    }
+
+    summary {
+      color: #2C2C2C;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      list-style: none;
+
+      cursor: pointer;
+
+
+      &:after {
+        content: '';
+        display: inline-block;
+        float: right;
+        width: .5rem;
+        height: .5rem;
+        border-bottom: 1px solid currentColor;
+        border-left: 1px solid currentColor;
+        border-bottom-left-radius: 2px;
+        transform: rotate(-45deg);
+        transform-origin: center center;
+        transition: transform ease-in-out 100ms;
+      }
+    }
+
+    ul {
+      width: 100%;
+      background: white;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      padding: 15px 17px 15px 0;
+      margin: 0;
+      box-sizing: border-box;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      max-height: 94px;
+      overflow-y: auto;
+
+      li {
+        list-style-type: none;
+        button {
+          width: 100%;
+          padding: 5px 170px 5px 20px;
+          background-color: transparent;
+          border: none;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 14px;
+          color: #2C2C2C;
+          cursor: pointer;
+          border-radius: 0 10px 10px 0;
+
+          &:hover {
+            background: #F3F8FC;
+          }
+          &:focus {
+            background: #F3F8FC;
+
+          }
+        }
+
+
+
+
+      }
+    }
+  }
+
+  &__price {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #000000;
+  }
+
+  &__radio-wrapper {
+    padding: 25px;
+
+    .form_radio {
+      display: flex;
+      align-items: center;
+      padding: 5px 0;
+    }
+
+    .custom-radio {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+      display: none;
+    }
+
+    .custom-radio + label {
+      display: inline-flex;
+      align-items: center;
+      user-select: none;
+    }
+
+    .custom-radio + label::before {
+      content: '';
+      display: inline-block;
+      width: 23px;
+      height: 23px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      border: 3px solid #DEDEDE;
+      border-radius: 5px;
+      margin-right: 0.5em;
+      background-color: #DEDEDE;
+    }
+
+
+    .custom-radio:checked + label::before {
+      background: linear-gradient(261.65deg, #EFBB37 -3.95%, #CF9E1F 109.44%);
+      border-radius: 5px;
+      width: 23px;
+      height: 23px;
+    }
+
+    label {
+      margin-bottom: 0;
+
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+
+  &__counter-buy-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 425px;
+    margin-left: 17px;
+  }
+
+  &__counter {
+    width: 92px;
+    height: 39px;
+
+    background: #E2E9F0;
+    border-radius: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+
+    .plus, .minus {
+      background: transparent;
+      border: none;
+      width: 30px;
+      height: 100%;
+
+
+      &:active {
+        background-color: #cccfd7;
+      }
+      &:focus {
+        outline: none;
+      }
+
+    }
+  }
+
+  &__buy-button {
+    width: 302px;
+    height: 39px;
+    background: linear-gradient(261.65deg, #EFBB37 -3.95%, #CF9E1F 109.44%);
+    border-radius: 30px;
+    border: none;
+    transition: 0.1s ease all;
+    color: white;
+
+    &:hover {
+      background: linear-gradient(261.65deg, #E9B32C -3.95%, #BF911A 109.44%);
+      filter: drop-shadow(0px 0px 5px #E9B32C);
+
+    }
+
+    &:active {
+      background: linear-gradient(261.65deg, #FFD773 -3.95%, #E2B645 109.44%);
+
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+}
+
+ul::-webkit-scrollbar {
+  width: 7px;
+  background: transparent;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: #F3F8FC;
+  border-radius: 15px;
+  width: 3px;
+}

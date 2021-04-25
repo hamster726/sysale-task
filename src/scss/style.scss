@@ -1,0 +1,30 @@
+@import "libs/bootstrap-reboot.min";
+@import "blocks/card";
+@import "../font/stylesheet.css";
+
+
+* {
+  transition: 0.2s ease all;
+  outline: none;
+
+
+}
+
+button {
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+
+}
+
+body {
+  margin: 0;
+  font-family: 'SF UI Display', sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
