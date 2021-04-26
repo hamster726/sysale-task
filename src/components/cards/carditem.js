@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 
-import CardImg1 from "../../img/cards/card1-1.jpg";
-import CardImg2 from "../../img/cards/card1-2.jpg";
 import CompareIco from "../../img/icons/compare-icon.svg";
 import SelectedIco from "../../img/icons/selected-icon.svg";
 
-const CardItem = () => {
+const CardItem = ({compareCounter, setCompareCounter, mainImg, secondImg, id}) => {
 
   const [count, setCount] = useState(1);
-  const [capacity, setCapacity] = useState(1);
+  const [capacity, setCapacity] = useState(100);
   const [colorListIsOpened, toggleColorList] = useState({open: ""});
   const [chosenColor, changeChosenColor] = useState("Цвет");
+  const [compare, toggleCompare] = useState(false);
+  const [imageNum, toggleImageNum] = useState(1);
 
   const setCountOfItem = (value) => {
     if (value === "-" && count !== 1) {
@@ -30,16 +30,47 @@ const CardItem = () => {
     toggleColorList({open: ""});
   }
 
+  const addToCompare = () => {
+    if (!compare) {
+      setCompareCounter(compareCounter + 1);
+    } else {
+      setCompareCounter(compareCounter - 1);
+    }
+
+    toggleCompare(!compare);
+    showCompareCounter();
+  }
+
+  const showCompareCounter = () => {
+      if (compare) {
+        return (<span className="catalog-item__compare-counter">{compareCounter}</span>)
+      }
+
+  }
+
+  const showImage = (value) => {
+    if (value === 1) {
+      return (<img className="main-img" src={mainImg} alt="shampoo"/>)
+    }
+    if (value === 2) {
+      return (<img className="main-img" src={secondImg} alt="shampoo"/>)
+    }
+  }
+
+
 
   return (
     <div className="catalog-item">
       <div className="catalog-item__wrapper">
         <div className="catalog-item__labels">
           <div className="catalog-item__new-label">new</div>
-          <button className="catalog-item__compare-button"><img src={CompareIco} alt="compare icon"/></button>
+          <button className="catalog-item__compare-button" onClick={() => addToCompare()}>
+            <img src={compare ? SelectedIco : CompareIco} alt="compare icon"/>
+            {showCompareCounter()}
+          </button>
         </div>
-        <div className="catalog-item__img">
-          <img src={CardImg1} alt="shampoo"/>
+        <div className="catalog-item__img" onMouseEnter={() => toggleImageNum(2)} onMouseLeave={() => toggleImageNum(1)}>
+          {showImage(imageNum)}
         </div>
         <div className="catalog-item__text-wrapper">
           <h4 className="catalog-item__title">Шампунь</h4>
@@ -73,9 +104,6 @@ const CardItem = () => {
                 <li>
                   <button>Розовый</button>
                 </li>
-                <li>
-                  <button>Белый</button>
-                </li>
               </ul>
             </details>
           </div>
@@ -85,16 +113,16 @@ const CardItem = () => {
           setCapacityOfItem(e)
         }}>
           <div className="form_radio">
-            <input id="radio-1" className="custom-radio" type="radio" name="radio" value="1" defaultChecked/>
-            <label htmlFor="radio-1">100 мл</label>
+            <input id={`radio-${id}1`} className="custom-radio" type="radio" name={`radio-${id}`} value="100" defaultChecked/>
+            <label htmlFor={`radio-${id}1`}>100 мл</label>
           </div>
           <div className="form_radio">
-            <input id="radio-2" className="custom-radio" type="radio" name="radio" value="2"/>
-            <label htmlFor="radio-2">200 мл</label>
+            <input id={`radio-${id}2`} className="custom-radio" type="radio" name={`radio-${id}`} value="200"/>
+            <label htmlFor={`radio-${id}2`}>200 мл</label>
           </div>
           <div className="form_radio">
-            <input id="radio-3" className="custom-radio" type="radio" name="radio" value="3"/>
-            <label htmlFor="radio-3">300 мл</label>
+            <input id={`radio-${id}3`} className="custom-radio" type="radio" name={`radio-${id}`} value="300"/>
+            <label htmlFor={`radio-${id}3`}>300 мл</label>
           </div>
         </div>
         <div className="catalog-item__counter-buy-button-wrapper">

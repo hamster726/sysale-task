@@ -1,5 +1,6 @@
-.catalog-item {
 
+.catalog-item {
+  margin: 17px;
   &__wrapper {
     position: relative;
     width: 587px;
@@ -9,15 +10,15 @@
     padding: 45px 46px;
   }
 
-  &__new-label {
+  &__new-label, .one-plus-one-label {
     position: absolute;
     width: 71px;
     height: 26px;
-    top: 44px;
+    top: 54px;
     left: 31px;
 
     background: linear-gradient(261.65deg, #EFBB37 -3.95%, #CF9E1F 109.44%);
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
 
     color: white;
@@ -39,23 +40,54 @@
     height: 46px;
 
     background: #FFFFFF;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
 
     border: none;
+
+    &:hover {
+      filter: drop-shadow(0px 0px 8px #BDD0E3);
+    }
+  }
+
+  &__compare-counter {
+    position: absolute;
+    background: #F64B33;
+    width: 14px;
+    height: 14px;
+    top: 0;
+    right: 0;
+    border-radius: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 11px;
+    color: #FFFFFF;
   }
 
   &__img {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    img {
-      width: 256px;
-      height: 261px;
-      filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.05));
-      border-radius: 25px;
+    margin: 0 auto;
+    width: 256px;
+    height: 261px;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.05));
+    &:hover {
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
+    .main-img {
+      height: 100%;
+    }
+
+
   }
 
   &__text-wrapper {
@@ -142,7 +174,7 @@
       position: absolute;
       top: 30px;
       left: 0;
-      padding: 15px 17px 15px 0;
+      padding: 0 17px 15px 0;
       margin: 0;
       box-sizing: border-box;
       border-bottom-left-radius: 15px;
@@ -277,11 +309,12 @@
       &:active {
         background-color: #cccfd7;
       }
-      &:focus {
-        outline: none;
-      }
-
     }
+
+    &:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
   }
 
   &__buy-button {
@@ -312,8 +345,9 @@
 }
 
 ul::-webkit-scrollbar {
-  width: 7px;
+  width: 3px;
   background: transparent;
+
 }
 
 ul::-webkit-scrollbar-thumb {
