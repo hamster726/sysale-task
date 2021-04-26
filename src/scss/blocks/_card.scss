@@ -1,6 +1,9 @@
 
 .catalog-item {
   margin: 17px;
+  &:hover {
+    filter: drop-shadow(0px 4px 45px #C3D4E4);
+  }
   &__wrapper {
     position: relative;
     width: 587px;
