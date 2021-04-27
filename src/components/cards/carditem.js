@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import CompareIco from "../../img/icons/compare-icon.svg";
 import SelectedIco from "../../img/icons/selected-icon.svg";
@@ -6,23 +6,34 @@ import SelectedIco from "../../img/icons/selected-icon.svg";
 const CardItem = ({compareCounter, setCompareCounter, mainImg, secondImg, id}) => {
 
   const [count, setCount] = useState(1);
-  const [capacity, setCapacity] = useState(100);
+  const [capacity, setCapacity] = useState("200");
   const [colorListIsOpened, toggleColorList] = useState({open: ""});
   const [chosenColor, changeChosenColor] = useState("Цвет");
   const [compare, toggleCompare] = useState(false);
   const [imageNum, toggleImageNum] = useState(1);
+  const [price, setPrice] = useState(0);
+
+  const currentCost = 200;
+
+  useEffect(() => {
+    setPrice(currentCost);
+  }, [])
+
 
   const setCountOfItem = (value) => {
     if (value === "-" && count !== 1) {
       setCount(count - 1);
+      setPrice(Number.parseInt(capacity)*(count-1));
     }
     if (value === "+") {
       setCount(count + 1);
+      setPrice(Number.parseInt(capacity)*(count+1));
     }
   }
 
   const setCapacityOfItem = (elem) => {
     setCapacity(elem.target.value);
+    setPrice(Number.parseInt(elem.target.value)*count);
   }
 
   const chooseColor = (e) => {
@@ -56,7 +67,6 @@ const CardItem = ({compareCounter, setCompareCounter, mainImg, secondImg, id}) =
       return (<img className="main-img" src={secondImg} alt="shampoo"/>)
     }
   }
-
 
 
   return (
@@ -107,21 +117,21 @@ const CardItem = ({compareCounter, setCompareCounter, mainImg, secondImg, id}) =
               </ul>
             </details>
           </div>
-          <div className="catalog-item__price">200 грн</div>
+          <div className="catalog-item__price">{price} грн</div>
         </div>
         <div className="catalog-item__radio-wrapper" onChange={(e) => {
           setCapacityOfItem(e)
         }}>
           <div className="form_radio">
-            <input id={`radio-${id}1`} className="custom-radio" type="radio" name={`radio-${id}`} value="100" defaultChecked/>
+            <input id={`radio-${id}1`} className="custom-radio" type="radio" name={`radio-${id}`} value="200" defaultChecked/>
             <label htmlFor={`radio-${id}1`}>100 мл</label>
           </div>
           <div className="form_radio">
-            <input id={`radio-${id}2`} className="custom-radio" type="radio" name={`radio-${id}`} value="200"/>
+            <input id={`radio-${id}2`} className="custom-radio" type="radio" name={`radio-${id}`} value="300"/>
             <label htmlFor={`radio-${id}2`}>200 мл</label>
           </div>
           <div className="form_radio">
-            <input id={`radio-${id}3`} className="custom-radio" type="radio" name={`radio-${id}`} value="300"/>
+            <input id={`radio-${id}3`} className="custom-radio" type="radio" name={`radio-${id}`} value="375"/>
             <label htmlFor={`radio-${id}3`}>300 мл</label>
           </div>
         </div>
